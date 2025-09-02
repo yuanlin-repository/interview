@@ -6,6 +6,7 @@ import java.util.*;
  * @author yuanlin.zhou
  * @date 2025/9/2 17:10
  * @description Consistent Hash Implementation
+ * refer to https://gongfukangee.github.io/2019/05/19/Hash/#%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9-1
  */
 public class ConsistentHash {
 
