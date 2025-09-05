@@ -4,16 +4,18 @@ package github.yuanlin;
 import github.yuanlin.consistenthash.ConsistentHash;
 import github.yuanlin.consistenthash.impl.DefaultNode;
 import github.yuanlin.ratelimit.RateLimiter;
+import github.yuanlin.uniqueid.SnowFlake;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
+
 
 public class Main {
     public static void main(String[] args) {
-//        testRateLimiter();
-        testConsistentHash();
+        SnowFlake snowFlake = new SnowFlake(16, 16);
+        System.out.println(snowFlake.nextId());
     }
+
 
     public static void testRateLimiter() {
         final RateLimiter rateLimiter = new RateLimiter(10, 1);
@@ -46,9 +48,11 @@ public class Main {
         Map<String, Integer> summary = new HashMap<>();
         for (int i = 0; i < 100; i++) {
             String host = consistentHash.getResourceByKey("admin" + i);
-            System.out.println("admin" + i + ": " + host);;
+            System.out.println("admin" + i + ": " + host);
+            ;
             summary.put(host, summary.getOrDefault(host, 0) + 1);
         }
         System.out.println(summary.toString());
     }
+
 }
